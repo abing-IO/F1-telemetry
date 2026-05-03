@@ -1,0 +1,7 @@
+fastf1
+flask
+flask-cors
+requests
+pandas
+numpy
+python-dotenv
