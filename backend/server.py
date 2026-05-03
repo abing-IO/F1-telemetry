@@ -85,7 +85,7 @@ def _summarize_for_ai(analysis_type, data):
 @app.route('/api/standings')
 def get_standings():
     try:
-        base_url = "http://api.jolpi.ca/ergast/f1/current"
+        base_url = "https://api.jolpi.ca/ergast/f1/current"
         
         try:
             d_resp = requests.get(f"{base_url}/driverStandings.json", timeout=3)
@@ -97,7 +97,7 @@ def get_standings():
 
         if not standings_lists:
             print("Current season empty. Falling back to previous year data.")
-            base_url = f"http://api.jolpi.ca/ergast/f1/{datetime.now().year - 1}"
+            base_url = f"https://api.jolpi.ca/ergast/f1/{datetime.now().year - 1}"
             d_resp = requests.get(f"{base_url}/driverStandings.json", timeout=5)
             d_data = d_resp.json()
             standings_lists = d_data['MRData']['StandingsTable']['StandingsLists']
@@ -313,15 +313,19 @@ def get_telemetry():
         })
 
     except Exception as e:
-        print(f"Server Error: {e}")
-        return jsonify({'status': 'error', 'message': str(e)}), 500
+        err_msg = str(e)
+        print(f"Server Error: {err_msg}")
+        # Detect future race / no data scenarios
+        if 'not been loaded' in err_msg or 'No data' in err_msg or 'does not exist' in err_msg:
+            return jsonify({'status': 'error', 'message': f'No data available for {year} {gp} ({session_type}). The session may not have taken place yet.'}), 404
+        return jsonify({'status': 'error', 'message': err_msg}), 500
 
 # --- ROUTE 3: SEASON PROGRESSION (race-by-race points) ---
 @app.route('/api/season-progress')
 def get_season_progress():
     year = request.args.get('year', 'current')
     try:
-        base_url = f"http://api.jolpi.ca/ergast/f1/{year}"
+        base_url = f"https://api.jolpi.ca/ergast/f1/{year}"
         
         # Get race schedule to know how many races
         schedule_resp = requests.get(f"{base_url}.json", timeout=5)
@@ -797,5 +801,5 @@ Discuss top speed differences, average speed comparison, lap time analysis, micr
     return jsonify({'status': 'error', 'message': 'Max retries exceeded'}), 500
 
 if __name__ == '__main__':
-    print("F1 Backend Running on Port 5000...")
+    print("Veloce Backend Running on Port 5000...")
     app.run(debug=True, port=5000)

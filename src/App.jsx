@@ -81,7 +81,7 @@ export default function F1TelemetryApp() {
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="bg-red-600 text-white font-black italic px-2 py-1 text-xl rounded-sm skew-x-[-10deg]">F1</div>
-            <span className="font-bold text-lg hidden sm:block tracking-tight">TELEMETRY<span className="text-red-600">HUB</span></span>
+            <span className="font-bold text-lg hidden sm:block tracking-tight">VELO<span className="text-red-600">CE</span></span>
           </div>
 
           <div className="flex gap-2 items-center">

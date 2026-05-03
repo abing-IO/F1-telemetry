@@ -20,7 +20,7 @@ export default function PDFExport({ targetRefs, sessionInfo, isDark = true }) {
             pdf.setFontSize(22);
             pdf.setFont("helvetica", "bolditalic");
             pdf.setTextColor(220, 38, 38); // Red
-            pdf.text("F1 TELEMETRYHUB", margin, currentY + 10);
+            pdf.text("VELOCE", margin, currentY + 10);
             
             pdf.setFontSize(14);
             pdf.setFont("helvetica", "bold");
@@ -69,7 +69,7 @@ export default function PDFExport({ targetRefs, sessionInfo, isDark = true }) {
             }
 
             // Save PDF
-            const filename = `F1_${sessionInfo.year}_${sessionInfo.gp}_${sessionInfo.sessionType}_Report.pdf`.replace(/\s+/g, '_');
+            const filename = `Veloce_${sessionInfo.year}_${sessionInfo.gp}_${sessionInfo.sessionType}_Report.pdf`.replace(/\s+/g, '_');
             pdf.save(filename);
             
         } catch (err) {

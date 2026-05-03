@@ -1,6 +1,6 @@
-# 🏎️ F1 TelemetryHub
+# 🏎️ Veloce — F1 Telemetry Analyser
 
-A real-time Formula 1 telemetry visualization and analysis dashboard. Compare driver performances, explore race data, and get AI-powered insights — all in a sleek, responsive web app.
+A real-time Formula 1 telemetry analysis dashboard. Compare driver performances, explore race data, and get AI-powered insights — all in a sleek, responsive web app.
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
@@ -39,8 +39,8 @@ A real-time Formula 1 telemetry visualization and analysis dashboard. Compare dr
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/f1-telemetry.git
-cd f1-telemetry
+git clone https://github.com/<your-username>/veloce.git
+cd veloce
 ```
 
 ### 2. Set up the frontend
@@ -82,7 +82,7 @@ The frontend runs at `http://localhost:5173` and the backend API at `http://loca
 ## 📁 Project Structure
 
 ```
-f1-telemetry/
+veloce/
 ├── backend/
 │   ├── server.py          # Flask API — telemetry, standings, AI endpoints
 │   ├── requirements.txt   # Python dependencies
@@ -99,7 +99,7 @@ f1-telemetry/
 │   ├── hooks/             # Custom React hooks (data fetching, theme)
 │   └── config/            # Driver/season configuration
 ├── docs/                  # Architecture & UML diagrams
-├── .env.example           # Frontend env template
+├── .env.example           # Environment variables template
 ├── package.json
 └── vite.config.js
 ```
